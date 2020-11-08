@@ -4,6 +4,6 @@ export class Monster {
     Exp: string;
     HP: string;
     MovementSpeed: string;
-    SeeingInvsible: string;
+    SeeingInvisible: string;
     ImageLink: string;
 }
