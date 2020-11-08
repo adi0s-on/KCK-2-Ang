@@ -1,0 +1,65 @@
+<div class="panel panel-primary" *ngFor="let monster of monsters">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{monster.Name}}</h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-xs-10">
+        <div class="row vertical-align">
+  
+          <div class="col-xs-4">
+            <img class="imageClass" [src]="monster.ImageLink" />
+          </div>
+          <div class="col-xs-8">
+  
+            <div class="row">
+              <div class="col-xs-6">
+                Id
+              </div>
+              <div class="col-xs-6">
+                : {{monster.Id}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Name
+              </div>
+              <div class="col-xs-6">
+                : {{monster.Name}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Exp
+              </div>
+              <div class="col-xs-6">
+                : {{monster.Exp}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                HP
+              </div>
+              <div class="col-xs-6">
+                : {{monster.HP}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Movement Speed
+              </div>
+              <div class="col-xs-6">
+                : {{monster.MovementSpeed}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Seeing Invisible
+              </div>
+              <div class="col-xs-6">
+                : {{true == monster.SeeingInvsible ? 'True' : 'False'}}
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
