@@ -1,5 +1,5 @@
 export class Monster {
-    Id: number;
+    Id: string;
     Name: string;
     Exp: string;
     HP: string;

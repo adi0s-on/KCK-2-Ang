@@ -1,0 +1,22 @@
+ul {
+  position: relative;
+}
+
+#logo {
+  color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  width: 0;
+  margin-right: auto;
+}
+
+img {
+  height: 52px;
+}
+
+.container {
+  width: 100%;
+  max-width: unset !important;
+}

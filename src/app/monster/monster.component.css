@@ -1,0 +1,8 @@
+th, td {
+  text-align: center !important;
+}
+
+td button {
+  width: 1.4rem !important;
+  height: 1.4rem !important;
+}

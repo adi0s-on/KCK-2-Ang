@@ -1,0 +1,10 @@
+<form [formGroup]="addMonsterForm" (ngSubmit)="submit()">
+  <div>
+    Are you sure u want to delete monster with Id: {{ monster?.Id }}
+  </div>
+  <p-button type="submit"
+            [slot]="'end'"
+            icon="pi pi-times"
+            label="Remove"
+            styleClass="p-button-outlined p-button-danger"></p-button>
+</form>

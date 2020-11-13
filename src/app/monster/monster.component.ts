@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Monster} from '../models/monster.model';
+import {Component, HostListener, OnInit} from '@angular/core';
+import {Monster} from '../shared/models/monster.model';
 import {HttpClient} from '@angular/common/http';
 import {MonsterService} from '../shared/services/monster/monster.service';
+import {ModalType} from '../shared/utils/modal-type.enum';
+import {WindowBreakpoints} from '../shared/utils/window-breakpoints.enum';
 
 @Component({
   selector: 'app-monster',
@@ -12,33 +14,63 @@ export class MonsterComponent implements OnInit{
 
   monsters: Monster[] = [];
 
-  editMonster = false;
+  modalToDisplay = false;
 
   currentMonster: Monster;
 
+  loading = true;
+
+  ModalType = ModalType;
+
+  operationType: ModalType;
+
+  isMobile = false;
+
+
   constructor(private http: HttpClient,
               private monsterService: MonsterService) {
+    this.monsterService.monsters$.subscribe((res) => {
+      this.monsters = res;
+    });
+
+    this.monsterService.loading$.subscribe((res) => {
+      this.loading = res;
+    });
   }
 
   ngOnInit(): void {
+    this.isMobile = window.innerWidth < +WindowBreakpoints.MOBILE;
     this.getMonsters();
   }
 
-  getMonsters(): void {
-    this.monsterService.getMonsters().subscribe((res: Monster[]) => {
-      this.monsters = res;
-    });
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.isMobile = event.target.innerWidth < +WindowBreakpoints.MOBILE;
   }
 
-  deleteMonster(id): void {
-    this.monsterService.deleteMonster(id).subscribe(() => {
-      this.monsters = this.monsters
-        .filter(monster => monster.Id !== id);
-    });
+  getMonsters(): void {
+    this.monsterService.getMonsters();
+  }
+
+  toggleModal(operationType: ModalType, monster?: Monster): void {
+    this.operationType = operationType;
+    this.currentMonster = monster;
+    this.modalToDisplay = true;
   }
 
   toggleEdition(monster: Monster): void {
+    this.operationType = ModalType.EDITING;
     this.currentMonster = monster;
-    this.editMonster = true;
+    this.modalToDisplay = true;
+  }
+
+  toggleRemoving(monster): void {
+    this.operationType = ModalType.REMOVING;
+    this.currentMonster = monster;
+    this.modalToDisplay = true;
+  }
+
+  buildTooltip(monster: Monster): string {
+    return `Exp: ${monster.Exp}<br/>HP: ${monster.HP}<br/>Movement Speed: ${monster.MovementSpeed}<br/>Seeing Invisible: ${monster.SeeingInvisible}`;
   }
 }

@@ -1,0 +1,15 @@
+label {
+  min-width: 150px;
+}
+
+p-button {
+  float: right;
+}
+
+button {
+  margin-right: 0;
+}
+
+::ng-deep .p-dropdown {
+  width: 100%;
+}

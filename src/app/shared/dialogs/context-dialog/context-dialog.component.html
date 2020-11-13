@@ -1,0 +1,15 @@
+<p-dialog #dialog [(visible)]="displayModal"
+          class="{{classMap.get(modalType)}}"
+          [modal]="true"
+          [style]="{minwidth: '50vw'}"
+          [maximizable]="false"
+          [baseZIndex]="10000"
+          [draggable]="false"
+          [resizable]="false"
+          [position]="ModalPosition.TOP"
+          [header]="titleMap.get(modalType)"
+          (onHide)="closeModal($event)">
+  <app-edit-form *ngIf="isTypeOf(ModalType.EDITING)" [monster]="monster" (closeModal)="displayModal = !$event"></app-edit-form>
+  <app-add-form *ngIf="isTypeOf(ModalType.ADDING)" (closeModal)="displayModal = !$event"></app-add-form>
+  <app-remove-form *ngIf="isTypeOf(ModalType.REMOVING)" [monster]="monster" (closeModal)="displayModal = !$event"></app-remove-form>
+</p-dialog>
