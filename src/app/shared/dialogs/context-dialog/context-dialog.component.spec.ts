@@ -1,7 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ContextDialogComponent} from './edit-dialog.component';
-
+import {ContextDialogComponent} from './context-dialog.component';
 describe('EditDialogComponent', () => {
   let component: ContextDialogComponent;
   let fixture: ComponentFixture<ContextDialogComponent>;

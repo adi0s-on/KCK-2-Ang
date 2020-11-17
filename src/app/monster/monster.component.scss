@@ -6,3 +6,36 @@ td button {
   width: 1.4rem !important;
   height: 1.4rem !important;
 }
+
+.logo-container {
+  display: flex;
+
+  img {
+    margin: 0 auto;
+    height: 200px;
+    width: auto;
+    transition: height 500ms;
+
+    @media screen and(max-width: 869px) {
+      height: 80px;
+      transition: height 500ms;
+    }
+  }
+}
+
+.monster-wrapper {
+  background-image: url("../../assets/thirdbackground.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: calc(100vh - 52px);
+}
+
+.my-padding {
+  padding-left: 7.5%;
+  padding-right: 7.5%;
+
+  @media screen and(max-width: 869px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

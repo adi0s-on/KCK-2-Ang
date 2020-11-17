@@ -1,10 +1,48 @@
 p-table {
-  thead tr {
-    height: 5rem;
+  .p-datatable-scrollable-header {
+    background: transparent !important;
+  }
+  .p-datatable-scrollable-body {
+    max-height: calc((100vh - 11rem) - 253px);
+
+    @media screen and(max-width: 869px) {
+      max-height: calc((100vh - 11rem) - 133px);
+    }
   }
 
-  tbody tr td img {
-    max-width: 64px;
-    max-height: 64px;
+  thead tr {
+    height: 5rem;
+
+    th {
+      background: transparent !important;
+      border-color: #495057 !important;
+    }
   }
+
+  tbody tr {
+    background: transparent !important;
+
+    td {
+      border-color: #495057 !important;
+
+      img {
+        max-width: 64px;
+        max-height: 64px;
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: .5rem;
+  height:10px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #495057 !important;
+  outline: 1px solid slategrey;
 }

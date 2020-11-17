@@ -1,94 +1,102 @@
-<div class="pt-5 pb-5">
-  <p-table [loading]="loading" [value]="monsters" [scrollable]="true" [scrollHeight]="'calc(100vh - 11rem - 53px)'">
-    <ng-template pTemplate="colgroup">
-      <colgroup *ngIf="!isMobile">
-        <col style="width: 10%">
-        <col style="width: 10%">
-        <col style="width: 10%">
-        <col style="width: 10%">
-        <col style="width: 10%">
-        <col style="width: 15%">
-        <col style="width: 14%">
-        <col style="width: 11%">
-      </colgroup>
-      <colgroup *ngIf="isMobile">
-        <col style="width: 25%">
-        <col style="width: 15%">
-        <col style="width: 35%">
-        <col style="width: 25%">
-      </colgroup>
-    </ng-template>
-    <ng-template pTemplate="header">
-      <tr>
-        <th>
-          <button *ngIf="!isMobile" pButton
-                  pRipple
-                  type="button"
-                  icon="pi pi-plus"
-                  label="Add"
-                  class="p-button-outlined p-button-success"
-                  (click)="toggleModal(ModalType.ADDING, null)">
-          </button>
-          <button *ngIf="isMobile" pButton
-                  pRipple
-                  type="button"
-                  icon="pi pi-plus"
-                  class="p-button-outlined p-button-rounded p-button-success"
-                  (click)="toggleModal(ModalType.ADDING, null)">
-          </button>
-        </th>
-        <th>Id</th>
-        <th>Name</th>
-        <th *ngIf="!isMobile">Exp</th>
-        <th *ngIf="!isMobile">HP</th>
-        <th *ngIf="!isMobile">Movement Speed</th>
-        <th *ngIf="!isMobile">Seeing Invisible</th>
-        <th>Actions</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-monster>
-      <tr>
-        <td>
-          <img [src]="monster.ImageLink" />
-        </td>
-        <td>{{ monster.Id }}</td>
-        <td>{{ monster.Name }}</td>
-        <td *ngIf="!isMobile">{{ monster.Exp }}</td>
-        <td *ngIf="!isMobile">{{ monster.HP }}</td>
-        <td *ngIf="!isMobile">{{ monster.MovementSpeed }}</td>
-        <td *ngIf="!isMobile">{{ monster.SeeingInvisible }}</td>
-        <td>
-          <button pButton
-                  pRipple
-                  type="button"
-                  icon="pi pi-times"
-                  class="p-button-rounded p-button-danger p-button-text"
-                  (click)="toggleModal(ModalType.REMOVING, monster)"></button>
-          <button pButton
-                  pRipple
-                  type="button"
-                  icon="pi pi-user-edit"
-                  class="p-button-rounded p-button-warning p-button-text"
-                  (click)="toggleModal(ModalType.EDITING, monster)"></button>
-          <button *ngIf="isMobile"
-                  class="info-button"
-                  pButton
-                  pTooltip="{{ buildTooltip(monster) }}"
-                  [escape]="false"
-                  [tooltipPosition]="'left'"
-                  [tooltipEvent]="'focus'"
-                  pRipple
-                  type="button"
-                  icon="pi pi-info"
-                  class="p-button-info p-button-text"></button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
-</div>
+<div class="monster-wrapper">
+  <div class="logo-container pt-4 pb-4">
+    <img src="assets/tibialogo.png">
+  </div>
+  <div class="pb-5 my-padding">
+    <p-table [loading]="loading"
+             [value]="monsters"
+             [scrollable]="true">
+      <ng-template pTemplate="colgroup">
+        <colgroup *ngIf="!isMobile">
+          <col style="width: 10%">
+          <col style="width: 10%">
+          <col style="width: 10%">
+          <col style="width: 10%">
+          <col style="width: 10%">
+          <col style="width: 15%">
+          <col style="width: 14%">
+          <col style="width: 11%">
+        </colgroup>
+        <colgroup *ngIf="isMobile">
+          <col style="width: 25%">
+          <col style="width: 15%">
+          <col style="width: 35%">
+          <col style="width: 25%">
+        </colgroup>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <button *ngIf="!isMobile" pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-plus"
+                    label="Add"
+                    class="p-button-outlined p-button-success"
+                    (click)="toggleModal(ModalType.ADDING, null)">
+            </button>
+            <button *ngIf="isMobile" pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-plus"
+                    class="p-button-outlined p-button-rounded p-button-success"
+                    (click)="toggleModal(ModalType.ADDING, null)">
+            </button>
+          </th>
+          <th>Id</th>
+          <th>Name</th>
+          <th *ngIf="!isMobile">Exp</th>
+          <th *ngIf="!isMobile">HP</th>
+          <th *ngIf="!isMobile">Movement Speed</th>
+          <th *ngIf="!isMobile">Seeing Invisible</th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-monster>
+        <tr>
+          <td>
+            <img [src]="monster.ImageLink" />
+          </td>
+          <td>{{ monster.Id }}</td>
+          <td>{{ monster.Name }}</td>
+          <td *ngIf="!isMobile">{{ monster.Exp }}</td>
+          <td *ngIf="!isMobile">{{ monster.HP }}</td>
+          <td *ngIf="!isMobile">{{ monster.MovementSpeed }}</td>
+          <td *ngIf="!isMobile">{{ monster.SeeingInvisible }}</td>
+          <td>
+            <button pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-times"
+                    class="p-button-rounded p-button-danger p-button-text"
+                    (click)="toggleModal(ModalType.REMOVING, monster)"></button>
+            <button pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-user-edit"
+                    class="p-button-rounded p-button-text"
+                    (click)="toggleModal(ModalType.EDITING, monster)"></button>
+            <button *ngIf="isMobile"
+                    class="info-button"
+                    pButton
+                    pTooltip="{{ buildTooltip(monster) }}"
+                    [escape]="false"
+                    [tooltipPosition]="'left'"
+                    [tooltipEvent]="'focus'"
+                    pRipple
+                    type="button"
+                    icon="pi pi-info"
+                    class="p-button-info p-button-text"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 
-<app-context-dialog [monster]="currentMonster"
-                 [displayModal]="modalToDisplay"
-                 [modalType]="operationType"
-                 (modalClosed)="modalToDisplay = $event">
-</app-context-dialog>
+  <app-context-dialog [monster]="currentMonster"
+                      [displayModal]="modalToDisplay"
+                      [modalType]="operationType"
+                      (modalClosed)="modalToDisplay = $event">
+  </app-context-dialog>
+
+</div>
