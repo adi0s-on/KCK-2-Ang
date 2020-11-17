@@ -1,5 +1,5 @@
 <p-dialog #dialog [(visible)]="displayModal"
-          class="{{classMap.get(modalType)}}"
+          class="{{ classMap.get(modalType) }}"
           [modal]="true"
           [style]="{minwidth: '50vw'}"
           [maximizable]="false"
@@ -12,4 +12,7 @@
   <app-edit-form *ngIf="isTypeOf(ModalType.EDITING)" [monster]="monster" (closeModal)="displayModal = !$event"></app-edit-form>
   <app-add-form *ngIf="isTypeOf(ModalType.ADDING)" (closeModal)="displayModal = !$event"></app-add-form>
   <app-remove-form *ngIf="isTypeOf(ModalType.REMOVING)" [monster]="monster" (closeModal)="displayModal = !$event"></app-remove-form>
+  <div *ngIf="loading" class="overlay">
+  </div>
 </p-dialog>
+<p-progressSpinner *ngIf="loading" [animationDuration]="'2s'"></p-progressSpinner>

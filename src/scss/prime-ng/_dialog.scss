@@ -1,0 +1,18 @@
+// prime-ng p-dialog styles
+
+.p-warning div div div .p-dialog-title {
+  color: #FBC02D;
+}
+
+.p-danger div div div .p-dialog-title {
+  color: #D32F2F;
+}
+
+.p-success div div div .p-dialog-title {
+  color: #689F38;
+}
+
+p-dialog {
+  min-width: 20vw;
+  width: fit-content;
+}

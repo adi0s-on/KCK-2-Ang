@@ -1,12 +1,13 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Monster} from '../../../models/monster.model';
 import {MonsterService} from '../../../services/monster/monster.service';
+import {LoaderService} from '../../../services/loader/loader.service';
 
 @Component({
   selector: 'app-add-form',
   templateUrl: './add-form.component.html',
-  styleUrls: ['./add-form.component.css']
+  styleUrls: ['./add-form.component.scss']
 })
 export class AddFormComponent implements OnInit {
 
@@ -28,8 +29,16 @@ export class AddFormComponent implements OnInit {
   ImageLink: FormControl;
   SeeingInvisible: FormControl;
 
+  loading = false;
+
   constructor(private formBuilder: FormBuilder,
-              private monsterService: MonsterService) {
+              private monsterService: MonsterService,
+              private loaderService: LoaderService) {
+  }
+
+  @HostListener('document:keydown.enter', ['$event'])
+  onClick(event: KeyboardEvent): void {
+      this.submit(this.addMonsterForm.value);
   }
 
   ngOnInit(): void {
@@ -60,11 +69,12 @@ export class AddFormComponent implements OnInit {
   submit(formValue: any): void {
     this.addMonsterForm.markAllAsTouched();
     this.addMonsterForm.markAsDirty();
-    console.log(this.addMonsterForm)
     formValue.SeeingInvisible = formValue.SeeingInvisible.type;
     if (this.addMonsterForm.valid) {
+      this.loaderService.setLoader(true);
       this.monsterService.addMonster(formValue).then((res) => {
         this.addMonsterForm.reset();
+        this.loaderService.setLoader(false);
         this.closeModal.emit(true);
       });
     }

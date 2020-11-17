@@ -33,9 +33,7 @@ export class MonsterService {
       this.http.delete(this.PATH + `delete?id=${id}`).subscribe((res: any) => {
         this._monsters = this._monsters.filter(monster => monster.Id !== id);
         this.monsters.next(this._monsters);
-        if (res) {
-          resolve(res);
-        }
+        resolve(res);
       }, (err) => {
         reject(err);
       });

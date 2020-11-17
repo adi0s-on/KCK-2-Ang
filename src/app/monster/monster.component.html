@@ -1,5 +1,5 @@
 <div class="pt-5 pb-5">
-  <p-table [loading]="loading" [value]="monsters">
+  <p-table [loading]="loading" [value]="monsters" [scrollable]="true" [scrollHeight]="'calc(100vh - 11rem - 53px)'">
     <ng-template pTemplate="colgroup">
       <colgroup *ngIf="!isMobile">
         <col style="width: 10%">
@@ -43,7 +43,7 @@
         <th *ngIf="!isMobile">HP</th>
         <th *ngIf="!isMobile">Movement Speed</th>
         <th *ngIf="!isMobile">Seeing Invisible</th>
-        <th>Akcje</th>
+        <th>Actions</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-monster>

@@ -29,7 +29,7 @@
               "./node_modules/primeflex/primeflex.css",
               "./node_modules/primeng/resources/primeng.min.css",
               "./node_modules/primeicons/primeicons.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -103,7 +103,7 @@
               "./node_modules/primeflex/primeflex.css",
               "./node_modules/primeng/resources/primeng.min.css",
               "./node_modules/primeicons/primeicons.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -136,5 +136,10 @@
       }
     }
   },
-  "defaultProject": "kck-projekt-II"
+  "defaultProject": "kck-projekt-II",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  }
 }

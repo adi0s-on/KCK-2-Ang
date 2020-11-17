@@ -1,12 +1,13 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Monster} from '../../../models/monster.model';
 import {MonsterService} from '../../../services/monster/monster.service';
+import {LoaderService} from '../../../services/loader/loader.service';
 
 @Component({
   selector: 'app-remove-form',
   templateUrl: './remove-form.component.html',
-  styleUrls: ['./remove-form.component.css']
+  styleUrls: ['./remove-form.component.scss']
 })
 export class RemoveFormComponent implements OnInit {
 
@@ -14,18 +15,27 @@ export class RemoveFormComponent implements OnInit {
 
   @Output() closeModal = new EventEmitter<boolean>();
 
-  addMonsterForm: FormGroup;
+  removeMonsterForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private monsterService: MonsterService) {
+              private monsterService: MonsterService,
+              private loaderService: LoaderService) {
+  }
+
+  @HostListener('document:keydown.enter', ['$event'])
+  onClick(event: any): void {
+    this.submit();
   }
 
   ngOnInit(): void {
-    this.addMonsterForm = this.formBuilder.group({});
+    this.removeMonsterForm = this.formBuilder.group({});
   }
 
   submit(): void {
-    this.monsterService.deleteMonster(this.monster.Id);
-    this.closeModal.emit(true);
+    this.loaderService.setLoader(true);
+    this.monsterService.deleteMonster(this.monster.Id).then(() => {
+      this.loaderService.setLoader(false);
+      this.closeModal.emit(true);
+    });
   }
 }

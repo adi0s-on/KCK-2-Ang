@@ -8,7 +8,7 @@ import {WindowBreakpoints} from '../shared/utils/window-breakpoints.enum';
 @Component({
   selector: 'app-monster',
   templateUrl: './monster.component.html',
-  styleUrls: ['./monster.component.css'],
+  styleUrls: ['./monster.component.scss'],
 })
 export class MonsterComponent implements OnInit{
 

@@ -2,12 +2,12 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Monster} from '../../models/monster.model';
 import {ModalPosition} from '../../utils/modal-position.enum';
 import {ModalType} from '../../utils/modal-type.enum';
-import {MonsterService} from '../../services/monster/monster.service';
+import {LoaderService} from '../../services/loader/loader.service';
 
 @Component({
   selector: 'app-context-dialog',
   templateUrl: './context-dialog.component.html',
-  styleUrls: ['./context-dialog.component.css']
+  styleUrls: ['./context-dialog.component.scss']
 })
 export class ContextDialogComponent implements OnInit {
 
@@ -20,20 +20,29 @@ export class ContextDialogComponent implements OnInit {
   @Output() modalClosed = new EventEmitter<boolean>();
 
   ModalPosition = ModalPosition;
+
   ModalType = ModalType;
+
   titleMap = new Map([
-    ['editing', 'Edit'],
-    ['adding', 'Add'],
-    ['removing', 'Remove']
+    [ModalType.EDITING, 'Edit'],
+    [ModalType.ADDING, 'Add'],
+    [ModalType.REMOVING, 'Remove']
   ]);
 
   classMap = new Map([
-    ['editing', 'p-warning'],
-    ['removing', 'p-danger'],
-    ['adding', 'p-success']
+    [ModalType.EDITING, 'p-warning'],
+    [ModalType.ADDING, 'p-success'],
+    [ModalType.REMOVING, 'p-danger']
   ]);
 
-  constructor(private monsterService: MonsterService) { }
+  loading = false;
+
+  constructor(private loaderService: LoaderService) {
+    this.loaderService.loading$.subscribe((status: boolean) => {
+      console.log(status)
+      this.loading = status;
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -44,13 +53,5 @@ export class ContextDialogComponent implements OnInit {
 
   isTypeOf(typeName: ModalType): boolean {
     return typeName === this.modalType;
-  }
-
-  deleteMonster(id): void {
-    this.monsterService.deleteMonster(id);
-  }
-
-  editMonster(monster: Monster): void {
-    this.monsterService.editMonster(monster)
   }
 }

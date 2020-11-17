@@ -1,12 +1,13 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Monster} from '../../../models/monster.model';
 import {MonsterService} from '../../../services/monster/monster.service';
+import {LoaderService} from '../../../services/loader/loader.service';
 
 @Component({
   selector: 'app-edit-form',
   templateUrl: './edit-form.component.html',
-  styleUrls: ['./edit-form.component.css']
+  styleUrls: ['./edit-form.component.scss']
 })
 export class EditFormComponent implements OnInit {
 
@@ -30,7 +31,13 @@ export class EditFormComponent implements OnInit {
   SeeingInvisible: FormControl;
 
   constructor(private formBuilder: FormBuilder,
-              private monsterService: MonsterService) {
+              private monsterService: MonsterService,
+              private loaderService: LoaderService) {
+  }
+
+  @HostListener('document:keydown.enter', ['$event'])
+  onClick(event: KeyboardEvent): void {
+    this.submit(this.editMonsterForm.value);
   }
 
   ngOnInit(): void {
@@ -62,11 +69,12 @@ export class EditFormComponent implements OnInit {
 
   submit(formValue: any): void {
     this.editMonsterForm.markAllAsTouched();
-    console.log(this.editMonsterForm)
     formValue.SeeingInvisible = formValue.SeeingInvisible.type;
     if (this.editMonsterForm.valid) {
+      this.loaderService.setLoader(true);
       this.monsterService.editMonster(formValue).then((res) => {
         this.editMonsterForm.reset();
+        this.loaderService.setLoader(false);
         this.closeModal.emit(true);
       });
     }

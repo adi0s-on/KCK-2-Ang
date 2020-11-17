@@ -20,6 +20,7 @@ import {ContextDialogComponent} from './shared/dialogs/context-dialog/context-di
 import {EditFormComponent} from './shared/dialogs/context-dialog/edit-form/edit-form.component';
 import {AddFormComponent} from './shared/dialogs/context-dialog/add-form/add-form.component';
 import {RemoveFormComponent} from './shared/dialogs/context-dialog/remove-form/remove-form.component';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -33,21 +34,22 @@ import {RemoveFormComponent} from './shared/dialogs/context-dialog/remove-form/r
     AddFormComponent,
     RemoveFormComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        TableModule,
-        DialogModule,
-        ButtonModule,
-        NgbModule,
-        InputTextModule,
-        ReactiveFormsModule,
-        DropdownModule,
-        FormsModule,
-        TooltipModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    TableModule,
+    DialogModule,
+    ButtonModule,
+    NgbModule,
+    InputTextModule,
+    ReactiveFormsModule,
+    DropdownModule,
+    FormsModule,
+    TooltipModule,
+    ProgressSpinnerModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
