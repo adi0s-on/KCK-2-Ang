@@ -54,18 +54,7 @@ export class MonsterComponent implements OnInit{
 
   toggleModal(operationType: ModalType, monster?: Monster): void {
     this.operationType = operationType;
-    this.currentMonster = monster;
-    this.modalToDisplay = true;
-  }
-
-  toggleEdition(monster: Monster): void {
-    this.operationType = ModalType.EDITING;
-    this.currentMonster = monster;
-    this.modalToDisplay = true;
-  }
-
-  toggleRemoving(monster): void {
-    this.operationType = ModalType.REMOVING;
+    console.log(monster)
     this.currentMonster = monster;
     this.modalToDisplay = true;
   }

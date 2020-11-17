@@ -11,9 +11,16 @@ import {LoaderService} from '../../../services/loader/loader.service';
 })
 export class EditFormComponent implements OnInit {
 
-  @Input() monster: Monster;
+  @Input() set monster(val: Monster) {
+    this._monster = val;
+    console.log(val)
+    this.createFormControls();
+    this.createForm();
+  }
 
   @Output() closeModal = new EventEmitter<boolean>();
+
+  _monster: Monster;
 
   seeingInvisibleOptions = [
     {type: 'true'},
@@ -41,18 +48,16 @@ export class EditFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createFormControls();
-    this.createForm();
   }
 
   createFormControls(): void {
-    this.Id = new FormControl(this.monster.Id, [Validators.required]);
-    this.Name = new FormControl(this.monster.Name, [Validators.required]);
-    this.Exp = new FormControl(this.monster.Exp, [Validators.required]);
-    this.HP = new FormControl(this.monster.HP, [Validators.required]);
-    this.MovementSpeed = new FormControl(this.monster.MovementSpeed, [Validators.required]);
-    this.ImageLink = new FormControl( this.monster.ImageLink, [Validators.required]);
-    this.SeeingInvisible = new FormControl( this.monster.SeeingInvisible ? { type: 'true' } : { type: 'false' }, [Validators.required]);
+    this.Id = new FormControl(this._monster.Id, [Validators.required]);
+    this.Name = new FormControl(this._monster.Name, [Validators.required]);
+    this.Exp = new FormControl(this._monster.Exp, [Validators.required]);
+    this.HP = new FormControl(this._monster.HP, [Validators.required]);
+    this.MovementSpeed = new FormControl(this._monster.MovementSpeed, [Validators.required]);
+    this.ImageLink = new FormControl( this._monster.ImageLink, [Validators.required]);
+    this.SeeingInvisible = new FormControl( this._monster.SeeingInvisible ? { type: 'true' } : { type: 'false' }, [Validators.required]);
   }
 
   createForm(): void {

@@ -73,7 +73,7 @@
           <button *ngIf="isMobile"
                   class="info-button"
                   pButton
-                  pTooltip="{{buildTooltip(monster)}}"
+                  pTooltip="{{ buildTooltip(monster) }}"
                   [escape]="false"
                   [tooltipPosition]="'left'"
                   [tooltipEvent]="'focus'"
@@ -87,7 +87,7 @@
   </p-table>
 </div>
 
-<app-context-dialog class="" [monster]="currentMonster"
+<app-context-dialog [monster]="currentMonster"
                  [displayModal]="modalToDisplay"
                  [modalType]="operationType"
                  (modalClosed)="modalToDisplay = $event">
