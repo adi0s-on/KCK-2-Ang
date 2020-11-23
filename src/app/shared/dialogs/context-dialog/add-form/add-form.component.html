@@ -1,46 +1,46 @@
 <form [formGroup]="addMonsterForm" (ngSubmit)="submit(addMonsterForm.value)">
   <div class="p-field p-grid">
-    <label for="Name" class="p-col-fixed">Name</label>
     <div class="p-col">
       <input id="Name"
              type="text"
              formControlName="Name"
              pInputText>
+      <label for="Name" class="p-col-fixed">Name</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="Exp" class="p-col-fixed">Exp</label>
     <div class="p-col">
       <input id="Exp" type="number" formControlName="Exp" pInputText>
+      <label for="Exp" class="p-col-fixed">Exp</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="HP" class="p-col-fixed">HP</label>
     <div class="p-col">
       <input id="HP" type="number" formControlName="HP" pInputText>
+      <label for="HP" class="p-col-fixed">HP</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="MovementSpeed" class="p-col-fixed">Movement Speed</label>
     <div class="p-col">
       <input id="MovementSpeed" type="number" formControlName="MovementSpeed" pInputText>
+      <label for="MovementSpeed" class="p-col-fixed">Movement Speed</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="SeeingInvisible" class="p-col-fixed">Seeing Invisible</label>
     <div class="p-col">
       <p-dropdown id="SeeingInvisible"
                   inputId="SeeingInvisible"
                   formControlName="SeeingInvisible"
                   [options]="seeingInvisibleOptions"
-                  placeholder="Select"
+                  placeholder="Seeing Invisible"
                   optionLabel="type"></p-dropdown>
+      <label for="SeeingInvisible" class="p-col-fixed">Seeing Invisible</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="ImageLink" class="p-col-fixed">Image Link</label>
     <div class="p-col">
       <input id="ImageLink" type="text" formControlName="ImageLink" pInputText>
+      <label for="ImageLink" class="p-col-fixed">Image Link</label>
     </div>
   </div>
   <p-button type="submit"

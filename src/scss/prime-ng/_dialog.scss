@@ -15,4 +15,16 @@
 p-dialog {
   min-width: 20vw;
   width: fit-content;
+
+  .p-dialog {
+    width: 20%;
+  }
+
+  .p-dialog-content {
+    padding-top: .5rem !important;
+  }
+
+  input {
+    width: 100%;
+  }
 }

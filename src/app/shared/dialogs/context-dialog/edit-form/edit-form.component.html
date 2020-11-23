@@ -1,49 +1,48 @@
 <form [formGroup]="editMonsterForm" (ngSubmit)="submit(editMonsterForm.value)">
   <div class="p-field p-grid">
-    <label for="Id" class="p-col-fixed">Id</label>
     <div class="p-col">
       <input disabled="disabled" id="Id" type="text" formControlName="Id" pInputText>
+      <label for="Id" class="p-col-fixed">Id</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="Name" class="p-col-fixed">Name</label>
     <div class="p-col">
       <input id="Name" type="text" formControlName="Name" pInputText>
+      <label for="Name" class="p-col-fixed">Name</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="Exp" class="p-col-fixed">Exp</label>
     <div class="p-col">
       <input id="Exp" type="number" formControlName="Exp" pInputText>
+      <label for="Exp" class="p-col-fixed">Exp</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="HP" class="p-col-fixed">HP</label>
     <div class="p-col">
       <input id="HP" type="number" formControlName="HP" pInputText>
+      <label for="HP" class="p-col-fixed">HP</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="MovementSpeed" class="p-col-fixed">MovementSpeed</label>
     <div class="p-col">
       <input id="MovementSpeed" type="number" formControlName="MovementSpeed" pInputText>
+      <label for="MovementSpeed" class="p-col-fixed">Movement Speed</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="SeeingInvisible" class="p-col-fixed" >SeeingInvisible</label>
     <div class="p-col">
       <p-dropdown id="SeeingInvisible"
                   inputId="SeeingInvisible"
                   formControlName="SeeingInvisible"
                   [options]="seeingInvisibleOptions"
-                  placeholder="Select"
                   optionLabel="type"></p-dropdown>
+      <label for="SeeingInvisible" class="p-col-fixed" >Seeing Invisible</label>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="ImageLink" class="p-col-fixed">ImageLink</label>
     <div class="p-col">
       <input id="ImageLink" type="text" formControlName="ImageLink" pInputText>
+      <label for="ImageLink" class="p-col-fixed">Image Link</label>
     </div>
   </div>
   <p-button type="submit"

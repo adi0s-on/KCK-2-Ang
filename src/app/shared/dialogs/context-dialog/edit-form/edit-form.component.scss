@@ -1,5 +1,22 @@
+.p-field {
+  position: relative;
+}
+
 label {
-  min-width: 150px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: .8rem;
+  padding: .25rem;
+  transition: all .3s;
+}
+
+input:focus + label, input.p-filled + label, p-dropdown.p-inputwrapper-filled + label {
+  bottom: 1.5rem;
+  font-size: .75rem;
+  margin-left: 1.3rem;
+  transition: all .3s;
+  background-color: white;
 }
 
 p-button {
