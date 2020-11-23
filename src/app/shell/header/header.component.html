@@ -1,0 +1,12 @@
+<div>
+  <ul>
+    <li *ngFor="let option of menuOptions">
+      <a [routerLinkActive]="'active'"
+         [routerLink]="[option.url]"
+      >
+        {{ option.title | uppercase }}
+        <span class="horizontal-line"></span>
+      </a>
+    </li>
+  </ul>
+</div>

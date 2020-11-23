@@ -5,7 +5,6 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {NotfoundComponent} from './notfound/notfound.component';
 import {MonsterComponent} from './monster/monster.component';
-import {StartComponent} from './start/start.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TableModule} from 'primeng/table';
@@ -21,6 +20,7 @@ import {EditFormComponent} from './shared/dialogs/context-dialog/edit-form/edit-
 import {AddFormComponent} from './shared/dialogs/context-dialog/add-form/add-form.component';
 import {RemoveFormComponent} from './shared/dialogs/context-dialog/remove-form/remove-form.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {HeaderComponent} from './shell/header/header.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +28,11 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     HomeComponent,
     NotfoundComponent,
     MonsterComponent,
-    StartComponent,
     ContextDialogComponent,
     EditFormComponent,
     AddFormComponent,
-    RemoveFormComponent
+    RemoveFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

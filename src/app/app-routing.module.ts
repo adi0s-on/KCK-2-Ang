@@ -1,29 +1,29 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { StartComponent } from './start/start.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {NotfoundComponent} from './notfound/notfound.component';
+import {MonsterComponent} from './monster/monster.component';
 
 const routes: Routes = [
   {
-    path: 'home', 
+    path: 'home',
     component: HomeComponent
-    
+
   },
 
   {
-    path: 'start',
-    component: StartComponent
+    path: 'monsters',
+    component: MonsterComponent
   },
 
   {
-    path: '',   
-    redirectTo: '/home', 
-    pathMatch: 'full' 
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
 
   {
-    path:'**',
+    path: '**',
     component: NotfoundComponent
   },
 ];
@@ -32,4 +32,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

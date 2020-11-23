@@ -3,5 +3,18 @@ h1 {
 }
 
 .carousel-item {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 52px);
+
+  img {
+    height: 100%;
+  }
+}
+
+#carouselExampleIndicators h1 {
+  text-align: center;
+  background-color: transparent;
+  position: absolute;
+  z-index: 100;
+  color: lightgray;
+  top: 1rem;
 }

@@ -39,7 +39,6 @@ export class ContextDialogComponent implements OnInit {
 
   constructor(private loaderService: LoaderService) {
     this.loaderService.loading$.subscribe((status: boolean) => {
-      console.log(status)
       this.loading = status;
     });
   }
