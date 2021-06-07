@@ -44,10 +44,22 @@
             </button>
           </th>
           <th>Id</th>
-          <th>Name</th>
-          <th *ngIf="!isMobile">Exp</th>
-          <th *ngIf="!isMobile">HP</th>
-          <th *ngIf="!isMobile">Movement Speed</th>
+          <th class="sort-title" (click)="sortByName()">Name
+            <span class="sort-icon" *ngIf="nameSortDir === '' || nameSortDir === 'asc'">▼</span>
+            <span class="sort-icon" *ngIf="nameSortDir === '' ||  nameSortDir === 'desc'">▲</span>
+          </th>
+          <th *ngIf="!isMobile" class="sort-title" (click)="sortByExp()">Exp
+            <span class="sort-icon" *ngIf="expSortDir === '' || expSortDir === 'asc'">▼</span>
+            <span class="sort-icon" *ngIf="expSortDir === '' ||  expSortDir === 'desc'">▲</span>
+          </th>
+          <th *ngIf="!isMobile" class="sort-title" (click)="sortByHp()">HP
+            <span class="sort-icon" *ngIf="hpSortDir === '' || hpSortDir === 'asc'">▼</span>
+            <span class="sort-icon" *ngIf="hpSortDir === '' ||  hpSortDir === 'desc'">▲</span>
+          </th>
+          <th *ngIf="!isMobile" class="sort-title" (click)="sortByMs()">Movement Speed
+            <span class="sort-icon" *ngIf="msSortDir === '' || msSortDir === 'asc'">▼</span>
+            <span class="sort-icon" *ngIf="msSortDir === '' ||  msSortDir === 'desc'">▲</span>
+          </th>
           <th *ngIf="!isMobile">Seeing Invisible</th>
           <th>Actions</th>
         </tr>
