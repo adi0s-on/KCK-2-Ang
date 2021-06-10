@@ -22,6 +22,8 @@ import {RemoveFormComponent} from './shared/dialogs/context-dialog/remove-form/r
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {HeaderComponent} from './shell/header/header.component';
 import {SortHeaderComponent} from './monster/sort-header/sort-header.component';
+import {SearchBarComponent} from './monster/search-bar/search-bar.component';
+import {CheckboxModule} from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {SortHeaderComponent} from './monster/sort-header/sort-header.component';
     AddFormComponent,
     RemoveFormComponent,
     HeaderComponent,
-    SortHeaderComponent
+    SortHeaderComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import {SortHeaderComponent} from './monster/sort-header/sort-header.component';
     FormsModule,
     TooltipModule,
     ProgressSpinnerModule,
+    CheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -67,4 +67,8 @@ export class MonsterService {
       });
     });
   }
+
+  get currentMonsters(): Monster[] {
+    return this._monsters;
+  }
 }

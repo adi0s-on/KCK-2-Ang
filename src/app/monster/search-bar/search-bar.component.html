@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="ml-auto">
+    <div class="col-12">
+      <input [(ngModel)]="phrase"
+             (ngModelChange)="search()"
+             [placeholder]="'Type phrase...'"
+             pInputText>
+    </div>
+    <div class="col-12">
+      <p-checkbox [(ngModel)]="ignoreCase" (ngModelChange)="search()" [binary]="true" [label]="'Ignore case'"></p-checkbox>
+    </div>
+    <div class="col-12">
+      <p-checkbox [(ngModel)]="searchWithoutPhrase" (ngModelChange)="search()" [binary]="true" [label]="'Without entered phrase'"></p-checkbox>
+    </div>
+  </div>
+</div>

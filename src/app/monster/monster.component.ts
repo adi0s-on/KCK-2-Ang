@@ -148,4 +148,9 @@ export class MonsterComponent implements OnInit{
       this.monsters = Object.assign([], this.tmpMonsers);
     }
   }
+
+  assignFilteredMonsters(filteredMonsters: Monster[]): void {
+    this.tmpMonsers = filteredMonsters;
+    this.monsters = filteredMonsters;
+  }
 }

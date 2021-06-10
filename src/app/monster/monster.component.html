@@ -3,6 +3,7 @@
     <img src="assets/tibialogo.png">
   </div>
   <div class="pb-5 my-padding">
+    <app-search-bar (filteredMonsters)="assignFilteredMonsters($event)"></app-search-bar>
     <p-table [loading]="loading"
              [value]="monsters"
              [scrollable]="true">
