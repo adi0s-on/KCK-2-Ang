@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {MonsterService} from '../shared/services/monster/monster.service';
 import {ModalType} from '../shared/utils/modal-type.enum';
 import {WindowBreakpoints} from '../shared/utils/window-breakpoints.enum';
+import {SortDirEnum} from '../shared/utils/sort-dir.enum';
 
 @Component({
   selector: 'app-monster',
@@ -27,10 +28,10 @@ export class MonsterComponent implements OnInit{
 
   isMobile = false;
 
-  nameSortDir = '';
-  expSortDir = '';
-  hpSortDir = '';
-  msSortDir = '';
+  nameSortDir: SortDirEnum = SortDirEnum.DEF;
+  expSortDir: SortDirEnum = SortDirEnum.DEF;
+  hpSortDir: SortDirEnum = SortDirEnum.DEF;
+  msSortDir: SortDirEnum = SortDirEnum.DEF;
 
   constructor(private http: HttpClient,
               private monsterService: MonsterService) {
@@ -69,8 +70,8 @@ export class MonsterComponent implements OnInit{
   }
 
   sortByName(): void {
-    if (this.nameSortDir === '') {
-      this.nameSortDir = 'asc';
+    if (this.nameSortDir === SortDirEnum.DEF) {
+      this.nameSortDir = SortDirEnum.ASC;
       this.monsters.sort((a, b) => {
         if (a.Name > b.Name) {
           return 1;
@@ -80,8 +81,8 @@ export class MonsterComponent implements OnInit{
           return 0;
         }
       });
-    } else if (this.nameSortDir === 'asc') {
-      this.nameSortDir = 'desc';
+    } else if (this.nameSortDir === SortDirEnum.ASC) {
+      this.nameSortDir = SortDirEnum.DESC;
       this.monsters.sort((a, b) => {
         if (a.Name > b.Name) {
           return -1;
@@ -92,58 +93,58 @@ export class MonsterComponent implements OnInit{
         }
       });
     } else {
-      this.nameSortDir = '';
+      this.nameSortDir = SortDirEnum.DEF;
       this.monsters = Object.assign([], this.tmpMonsers);
     }
   }
 
   sortByExp(): void {
-    if (this.expSortDir === '') {
-      this.expSortDir = 'asc';
+    if (this.expSortDir === SortDirEnum.DEF) {
+      this.expSortDir = SortDirEnum.ASC;
       this.monsters.sort((a, b) => {
         return +a.Exp - +b.Exp;
       });
-    } else if (this.expSortDir === 'asc') {
-      this.expSortDir = 'desc';
+    } else if (this.expSortDir === SortDirEnum.ASC) {
+      this.expSortDir = SortDirEnum.DESC;
       this.monsters.sort((a, b) => {
         return +b.Exp - +a.Exp;
       });
     } else {
-      this.expSortDir = '';
+      this.expSortDir = SortDirEnum.DEF;
       this.monsters = Object.assign([], this.tmpMonsers);
     }
   }
 
   sortByHp(): void {
-    if (this.hpSortDir === '') {
-      this.hpSortDir = 'asc';
+    if (this.hpSortDir === SortDirEnum.DEF) {
+      this.hpSortDir = SortDirEnum.ASC;
       this.monsters.sort((a, b) => {
         return +a.HP - +b.HP;
       });
-    } else if (this.hpSortDir === 'asc') {
-      this.hpSortDir = 'desc';
+    } else if (this.hpSortDir === SortDirEnum.ASC) {
+      this.hpSortDir = SortDirEnum.DESC;
       this.monsters.sort((a, b) => {
         return +b.HP - +a.HP;
       });
     } else {
-      this.hpSortDir = '';
+      this.hpSortDir = SortDirEnum.DEF;
       this.monsters = Object.assign([], this.tmpMonsers);
     }
   }
 
   sortByMs(): void {
-    if (this.msSortDir === '') {
-      this.msSortDir = 'asc';
+    if (this.msSortDir === SortDirEnum.DEF) {
+      this.msSortDir = SortDirEnum.ASC;
       this.monsters.sort((a, b) => {
         return +a.MovementSpeed - +b.MovementSpeed;
       });
-    } else if (this.msSortDir === 'asc') {
-      this.msSortDir = 'desc';
+    } else if (this.msSortDir === SortDirEnum.ASC) {
+      this.msSortDir = SortDirEnum.DESC;
       this.monsters.sort((a, b) => {
         return +b.MovementSpeed - +a.MovementSpeed;
       });
     } else {
-      this.msSortDir = '';
+      this.msSortDir = SortDirEnum.DEF;
       this.monsters = Object.assign([], this.tmpMonsers);
     }
   }

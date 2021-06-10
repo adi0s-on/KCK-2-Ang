@@ -21,6 +21,7 @@ import {AddFormComponent} from './shared/dialogs/context-dialog/add-form/add-for
 import {RemoveFormComponent} from './shared/dialogs/context-dialog/remove-form/remove-form.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {HeaderComponent} from './shell/header/header.component';
+import {SortHeaderComponent} from './monster/sort-header/sort-header.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {HeaderComponent} from './shell/header/header.component';
     EditFormComponent,
     AddFormComponent,
     RemoveFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    SortHeaderComponent
   ],
   imports: [
     BrowserModule,

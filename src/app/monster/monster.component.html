@@ -44,21 +44,17 @@
             </button>
           </th>
           <th>Id</th>
-          <th class="sort-title" (click)="sortByName()">Name
-            <span class="sort-icon" *ngIf="nameSortDir === '' || nameSortDir === 'asc'">▼</span>
-            <span class="sort-icon" *ngIf="nameSortDir === '' ||  nameSortDir === 'desc'">▲</span>
+          <th class="sort-title" (click)="sortByName()">
+            <app-sort-header [title]="'Name'" [sortDir]="nameSortDir"></app-sort-header>
           </th>
-          <th *ngIf="!isMobile" class="sort-title" (click)="sortByExp()">Exp
-            <span class="sort-icon" *ngIf="expSortDir === '' || expSortDir === 'asc'">▼</span>
-            <span class="sort-icon" *ngIf="expSortDir === '' ||  expSortDir === 'desc'">▲</span>
+          <th *ngIf="!isMobile" class="sort-title" (click)="sortByExp()">
+            <app-sort-header [title]="'Exp'" [sortDir]="expSortDir"></app-sort-header>
           </th>
-          <th *ngIf="!isMobile" class="sort-title" (click)="sortByHp()">HP
-            <span class="sort-icon" *ngIf="hpSortDir === '' || hpSortDir === 'asc'">▼</span>
-            <span class="sort-icon" *ngIf="hpSortDir === '' ||  hpSortDir === 'desc'">▲</span>
+          <th *ngIf="!isMobile" class="sort-title" (click)="sortByHp()">
+            <app-sort-header [title]="'HP'" [sortDir]="hpSortDir"></app-sort-header>
           </th>
-          <th *ngIf="!isMobile" class="sort-title" (click)="sortByMs()">Movement Speed
-            <span class="sort-icon" *ngIf="msSortDir === '' || msSortDir === 'asc'">▼</span>
-            <span class="sort-icon" *ngIf="msSortDir === '' ||  msSortDir === 'desc'">▲</span>
+          <th *ngIf="!isMobile" class="sort-title" (click)="sortByMs()">
+            <app-sort-header [title]="'Movement Speed'" [sortDir]="msSortDir"></app-sort-header>
           </th>
           <th *ngIf="!isMobile">Seeing Invisible</th>
           <th>Actions</th>
