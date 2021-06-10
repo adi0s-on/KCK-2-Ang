@@ -3,10 +3,10 @@ p-table {
     background: transparent !important;
   }
   .p-datatable-scrollable-body {
-    max-height: calc((100vh - 11rem) - 253px);
+    max-height: calc((100vh - 11rem) - 345px);
 
     @media screen and(max-width: 869px) {
-      max-height: calc((100vh - 11rem) - 133px);
+      max-height: calc((100vh - 11rem) - 225px);
     }
   }
 

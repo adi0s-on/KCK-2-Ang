@@ -38,6 +38,7 @@ export class MonsterComponent implements OnInit{
     this.monsterService.monsters$.subscribe((res) => {
       this.monsters = res;
       this.tmpMonsers = Object.assign([], res);
+      this.resetSortDirections();
     });
 
     this.monsterService.loading$.subscribe((res) => {
@@ -149,8 +150,22 @@ export class MonsterComponent implements OnInit{
     }
   }
 
+  sortById(): void {
+    this.monsters.sort((a, b) => {
+      return +a.Id - +b.Id;
+    });
+  }
+
   assignFilteredMonsters(filteredMonsters: Monster[]): void {
     this.tmpMonsers = filteredMonsters;
     this.monsters = filteredMonsters;
+  }
+
+  resetSortDirections(): void {
+    this.nameSortDir = SortDirEnum.DEF;
+    this.expSortDir = SortDirEnum.DEF;
+    this.hpSortDir = SortDirEnum.DEF;
+    this.msSortDir = SortDirEnum.DEF;
+    this.sortById();
   }
 }

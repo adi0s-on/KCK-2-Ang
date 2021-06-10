@@ -21,6 +21,9 @@ export class SearchBarComponent implements OnInit {
   constructor(private monsterService: MonsterService) {
     this.monsterService.monsters$.subscribe((res: Monster[]) => {
       this.monsters = res;
+      this.phrase = '';
+      this.ignoreCase = false;
+      this.searchWithoutPhrase = false;
     });
   }
 
@@ -29,19 +32,21 @@ export class SearchBarComponent implements OnInit {
   }
 
   search(): void {
-    this.filteredMonsters.emit(Object.assign([], this.monsters).filter(monster => {
-      if (this.ignoreCase && !this.searchWithoutPhrase) {
-        return monster.Name.toLowerCase().indexOf(this.phrase.toLowerCase()) >= 0;
+    this.filteredMonsters.emit(
+      Object.assign([], this.monsters).filter(monster => {
+        if (this.ignoreCase && !this.searchWithoutPhrase) {
+          return monster.Name.toLowerCase().indexOf(this.phrase.toLowerCase()) >= 0;
+        }
+        if (this.searchWithoutPhrase && this.ignoreCase) {
+          return monster.Name.toLowerCase().indexOf(this.phrase.toLowerCase()) < 0;
+        }
+        if (this.searchWithoutPhrase && !this.ignoreCase) {
+          return monster.Name.indexOf(this.phrase) < 0;
+        }
+        if (!this.searchWithoutPhrase && !this.ignoreCase) {
+          return monster.Name.indexOf(this.phrase) >= 0;
+        }
       }
-      if (this.searchWithoutPhrase && this.ignoreCase) {
-        return monster.Name.toLowerCase().indexOf(this.phrase.toLowerCase()) < 0;
-      }
-      if (this.searchWithoutPhrase && !this.ignoreCase) {
-        return monster.Name.indexOf(this.phrase) < 0;
-      }
-      if (!this.searchWithoutPhrase && !this.ignoreCase) {
-        return monster.Name.indexOf(this.phrase) >= 0;
-      }
-    }));
+    ));
   }
 }
